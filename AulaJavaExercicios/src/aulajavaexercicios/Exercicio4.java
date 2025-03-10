@@ -16,6 +16,7 @@ public class Exercicio4 {
        float area;
        area = altura * base;
         System.out.println("A área do retângulo é de "+ area);
+        
     }
     
 }
