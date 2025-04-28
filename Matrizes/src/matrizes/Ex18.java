@@ -11,7 +11,7 @@ package matrizes;
 public class Ex18 {
         public static void main(String[] args) {
          int[] numeros = {8, 11, 12, 14, 19, 21, 22, 23, 33, 34, 39, 44, 54, 56, 65, 67, 78, 82, 89, 90};
-        int chave = 44;  // Elemento que queremos buscar
+        int chave = 44;  
         
         int inicio = 0;
         int fim = numeros.length - 1;
