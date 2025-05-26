@@ -33,7 +33,7 @@ public class Main2 {
 
         Atacante atacante = new Atacante(nome, idade, nacionalidade, golsMarcados);
         atacante.exibirDados();
-        atacante.armarJogada();
+        atacante.baterPenalti();
 
         JOptionPane.showMessageDialog(null, "-----------------------");
 
