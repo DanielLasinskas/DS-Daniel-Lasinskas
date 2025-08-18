@@ -18,7 +18,7 @@ public class Consulta {
     public static void Consultar_Dados() {
         String sql = "SELECT * FROM alunos";
 
-        try (Connection conn = Conexao.obterConexao();
+        try (Connection conn = ConectaBanco.obterConexao();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet resultado = stmt.executeQuery()) {
 

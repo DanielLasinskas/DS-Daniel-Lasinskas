@@ -9,49 +9,30 @@ package scriptbanco;
  * @author CAMARGO
  */
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Consulta {
+public class Inserir_Dados {
 
-    public static void Consultar_Dados() {
-        String url = "jdbc:mysql://localhost:3306/fat";
-        String usuario = "root";  // ou use variáveis: String usuario = ..., senha = ...
-        String senha = "";
+    public static void InserirExemplos() {
+        String sql = "INSERT INTO alunos (codigo_aluno, nome_aluno) VALUES (?, ?)";
 
-        try {
-            // 1. Carregar driver JDBC do MySQL
-            Class.forName("com.mysql.cj.jdbc.Driver");
+        try (Connection conn = ConectaBanco.obterConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            // 2. Conectar ao banco
-            Connection conexao = DriverManager.getConnection(url, usuario, senha);
-            System.out.println("✅ Conectado ao banco!");
+            // Inserindo alunos de exemplo
+            stmt.setString(1, "A001");
+            stmt.setString(2, "João Silva");
+            stmt.executeUpdate();
 
-            // 3. Consulta SQL
-            String sql = "SELECT * FROM alunos";
-            PreparedStatement stmt = conexao.prepareStatement(sql);
+            stmt.setString(1, "A002");
+            stmt.setString(2, "Maria Oliveira");
+            stmt.executeUpdate();
 
-            // 4. Executar e exibir resultados
-            ResultSet resultado = stmt.executeQuery();
+            System.out.println("✅ Alunos inseridos com sucesso!");
 
-            System.out.println("📋 Lista de alunos:");
-            while (resultado.next()) {
-                String nome_aluno = resultado.getString("nome_aluno");
-                String codigo_aluno = resultado.getString("codigo_aluno");
-                System.out.println("Nome: " + nome_aluno + " | Codigo Aluno " + codigo_aluno);
-            }
-
-            // 5. Fechar
-            resultado.close();
-            stmt.close();
-            conexao.close();
-
-        } catch (ClassNotFoundException e) {
-            System.out.println("❌ Driver JDBC não encontrado: " + e.getMessage());
         } catch (SQLException e) {
-            System.out.println("❌ Erro ao conectar ou consultar: " + e.getMessage());
+            System.out.println("❌ Erro ao inserir dados: " + e.getMessage());
         }
     }
 }
