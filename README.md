@@ -1,2 +1,4 @@
 # DS-Daniel-Lasinskas
-Desenvolvimento de Sistemas por professor João Siles e Davi Villar
+📚Arquivos que foram feitos durante o segundo semestre: 
+
+✅ - "ScriptBanco"
